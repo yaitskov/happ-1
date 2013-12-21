@@ -10,9 +10,14 @@ pathes = [ dir "download" $ ok "git clone from http://github.com/yaitskov",
            dir "info" $ ok "mini wiki",
            dir "path" $ path helloPage,
            dir "write" $ storeValue,
+           dir "param" $ showParam,
            dir "read" $ readValue,
            ok "home page"
          ]
+
+showParam = do
+  p <- look "p1"
+  ok $ "p1 = [" ++ p ++ "]"
 
 readValue = do
   path $ \name -> do

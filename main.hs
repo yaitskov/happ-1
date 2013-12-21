@@ -7,8 +7,14 @@ module Main where
 -- main = do simpleHTTP nullConf $ ok "Hello, World!"
 
 import Happstack.Server
+import Control.Monad
 
 -- main :: IO ()
-main = simpleHTTP nullConf $ ok "Hello, <b>world</b>"
+main = simpleHTTP nullConf $ msum pathes
+
+pathes = [ dir "download" $ ok "git clone from http://github.com/yaitskov",
+           dir "info" $ ok "mini wiki",
+           ok "home page"
+         ]
 
 
